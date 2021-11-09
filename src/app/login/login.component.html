@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="container__header">
+    <h3>Login to your account</h3>
+  </div>
+  <form
+    class="logForm"
+    [formGroup]="loginForm"
+    (ngSubmit)="onLogin()"
+  >
+    <div class="container__field">
+      <label for="email">Email</label>
+      <br>
+      <input
+        type="email"
+        formControlName="email"
+        placeholder="someone@example.com"
+      >
+    </div>
+    <div class="container__field">
+      <label for="password">Password</label>
+      <br>
+      <input
+        type="password"
+        formControlName="password"
+        placeholder="password"
+      >
+    </div>
+    <button
+      class="container__btn"
+      type="submit"
+      [disabled]="loginForm.invalid"
+      >Login
+    </button>
+  </form>
+  <p>{{ errorMessage }}</p>
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="container__logo">
+    <h2 (click)="goHome()">Welcome to SuppSupply</h2>
+  </div>
+  <div class="container__search">
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+      <input
+        type="text"
+        class="container__search__bar"
+        formControlName="search_query"
+        placeholder="Search for Products"
+      >
+      <button
+        type="submit"
+        class="container__search__btn"
+        [disabled]="!searchForm.valid"
+        ><fa-icon [icon]="faSearch"></fa-icon>
+      </button>
+    </form>
+  </div>
+  <div class="container__links">
+    <a routerLink="/products">Products</a>
+    <a *ngIf="!isAuthenticated" routerLink="/register">Register</a>
+    <a *ngIf="!isAuthenticated" routerLink="/login">Login</a>
+    <a *ngIf="isAuthenticated" routerLink="/user">{{ user.firstName }}</a>
+    <a *ngIf="isAuthenticated" (click)="logout()" style="cursor: pointer;">Logout</a>
+    <a routerLink="/cart"><fa-icon [icon]="faShoppingCart"></fa-icon></a>
+  </div>
+</div>

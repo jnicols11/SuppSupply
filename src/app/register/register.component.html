@@ -1,0 +1,61 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="container__header">
+      <h3>Register for an account</h3>
+    </div>
+    <form
+      class="regForm"
+      [formGroup]="registerForm"
+      (ngSubmit)="onRegister()"
+    >
+      <div class="container__field">
+        <label for="firstname">First Name</label>
+        <br>
+        <input
+          type="text"
+          formControlName="firstName"
+          placeholder="Jordan"
+        >
+      </div>
+      <div class="container__field">
+        <label for="lastname">Last Name</label>
+        <br>
+        <input
+          type="text"
+          formControlName="lastName"
+          placeholder="Nicols"
+        >
+      </div>
+      <div class="container__field">
+        <label for="email">Email</label>
+        <br>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="someone@example.com"
+        >
+      </div>
+      <div class="container__field">
+        <label for="password">Password</label>
+        <br>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Password"
+        >
+      </div>
+      <button
+        class="container__btn"
+        type="submit"
+        [disabled]="registerForm.invalid || regSuccess"
+        >Register
+      </button>
+    </form>
+    <p *ngIf="regFailure">Registration failed :( Please try again</p>
+  </div>
+
+  <div *ngIf="regSuccess" class="success">
+    <h2>Registration Success!</h2>
+    <a routerLink="/login">Go To Login</a>
+  </div>
+</div>

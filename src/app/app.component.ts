@@ -1,4 +1,11 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { UpdateCart } from './store/actions/cart.actions';
+
+interface AppState {
+  message: string;
+}
 
 @Component({
   selector: 'app-root',
@@ -6,5 +13,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'SuppSupply';
+  message: Observable<string>
+
+  constructor(private store: Store<AppState>) {
+    this.store.dispatch(new UpdateCart({ userID: null, products: [] }));
+  }
 }

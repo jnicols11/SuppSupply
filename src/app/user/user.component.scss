@@ -1,0 +1,89 @@
+@import '../app.component.scss';
+
+.container {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3%;
+  padding: 0 15px;
+  background-color: $color-grey-light;
+  border: 2px solid $color-grey;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+
+  & h2 {
+    font-family: $font;
+    color: $color-primary;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    & h4 {
+      font-family: $font;
+      color: $color-tertiary;
+    }
+    &__user {
+      text-align: left;
+
+
+      &__field {
+        font-family: $font;
+        margin-bottom: 15%;
+
+        & label {
+          color: $color-primary;
+          font-size: .8rem;
+        }
+
+        & input {
+          width: 150%;
+          height: 25px;
+          border-radius: 5px;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          -ms-border-radius: 5px;
+          -o-border-radius: 5px;
+        }
+      }
+
+      &__btn {
+        margin-top: 25%;
+        margin-left: 25%;
+        height: 30px;
+        background-color: $color-white;
+        color: $color-primary;
+        border: 2px solid $color-primary;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -o-border-radius: 20px;
+        cursor: pointer;
+        transition: all .5s;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        -ms-transition: all .5s;
+        -o-transition: all .5s;
+      }
+
+      &__btn:hover {
+        background-color: $color-primary;
+      }
+
+      &__btn:disabled {
+        opacity: 25%;
+        cursor: default;
+      }
+
+      &__btn:disabled:hover {
+        background-color: $color-white;
+      }
+    }
+  }
+}

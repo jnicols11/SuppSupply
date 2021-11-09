@@ -1,0 +1,19 @@
+<div *ngIf="products.length == 0" class="container">
+  <p>No products in cart, try adding some</p>
+</div>
+<div class="container" *ngIf="products.length != 0">
+  <h3>Items in cart</h3>
+  <div class="container__products">
+    <div class="container__products__item" *ngFor="let product of products; let i = index">
+      <img src="assets/images/{{ product.image }}" alt="{{ product.name }}"/>
+      <p>{{ product.name }}</p>
+      <p>{{ product.description }}</p>
+      <p>{{ product.price | currency }}</p>
+      <button
+        type="button"
+        (click)="removeFromCart(i)"
+        >Remove Item
+      </button>
+    </div>
+  </div>
+</div>

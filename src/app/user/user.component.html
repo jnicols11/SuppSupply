@@ -1,0 +1,46 @@
+<div class="container" *ngIf="isAuthenticated && user != null">
+  <h2>{{ user.firstName }}, here is your account information</h2>
+  <div class="container__info">
+    <div class="container__info__user">
+      <form
+        [formGroup]="userForm"
+        (ngSubmit)="editUser()"
+      >
+        <h4>User Info</h4>
+        <div class="container__info__user__field">
+          <label for="firstName">First Name</label>
+          <br>
+          <input
+            type="text"
+            formControlName="firstName"
+          >
+        </div>
+        <div class="container__info__user__field">
+          <label for="lastName">Last Name</label>
+          <br>
+          <input
+            type="text"
+            formControlName="lastName"
+          >
+        </div>
+        <div class="container__info__user__field">
+          <label for="email">Email</label>
+          <br>
+          <input
+            type="email"
+            formControlName="email"
+          >
+        </div>
+        <button
+          class="container__info__user__btn"
+          type="submit"
+          [disabled]="userForm.pristine || !userForm.valid"
+          >Edit Account
+        </button>
+      </form>
+    </div>
+    <div class="container__info__orders">
+      <h4>Order Info</h4>
+    </div>
+  </div>
+</div>

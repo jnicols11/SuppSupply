@@ -1,0 +1,32 @@
+<p *ngIf="products.length == 0">No products found</p>
+<div class="container" *ngIf="products.length != 0">
+  <div class="container__products">
+    <div class="container__products__item" *ngFor="let product of products" (click)="selectProduct(product)">
+      <img src="assets/images/{{ product.image }}" alt="{{ product.name }}">
+      <h4>{{ product.name }}</h4>
+      <p>{{ product.price | currency }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="view" *ngIf="selectedProduct">
+  <button
+    class="xBtn"
+    (click)="resetView()"
+    >X
+  </button>
+  <div class="view__container">
+    <h3>{{ selectedProduct.name }}</h3>
+    <img src="assets/images/{{ selectedProduct.image }}" alt="{{ selectedProduct.name }}"/>
+    <p>{{ selectedProduct.description }}</p>
+    <div class="view__block">
+      <p>{{ selectedProduct.price | currency }}</p>
+      <p>{{ selectedProduct.quantity }} available!</p>
+    </div>
+    <button
+      class="view__btn"
+      (click)="addToCart()"
+      >Add to Cart
+    </button>
+  </div>
+</div>
