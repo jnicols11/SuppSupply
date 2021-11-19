@@ -1,0 +1,116 @@
+@import '../app.component.scss';
+
+.banner {
+  position: relative;
+  margin-top: 2%;
+  width: 100%;
+  height: 450px;
+  background-image: linear-gradient(to bottom, #ffffff77, #fb8b2391), url('../../assets/images/cover3.jpg');
+  background-repeat: no-repeat;
+  background-position: 50% 40%;
+  padding: 20px;
+
+  & h2 {
+    font-family: $font;
+    color: $color-primary;
+    font-size: 1.6rem;
+    margin-left: 3%;
+  }
+
+  & button {
+    position: absolute;
+    right: 500px;
+    bottom: 100px;
+    font-size: 20px;
+    color: $color-primary;
+    width: 150px;
+    height: 60px;
+    background-color: $color-white;
+    border: 2px solid $color-primary;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    box-shadow: 5px 3px 3px $color-grey-dark;
+    cursor: pointer;
+    transition: all .5s;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+  }
+
+  & button:hover {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+}
+
+.featured {
+  margin-top: 3%;
+  margin-bottom: 5%;
+
+  & h2 {
+    text-align: center;
+    font-family: $font;
+    color: $color-primary;
+    font-size: 2.4rem;
+  }
+
+  &__item {
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-evenly;
+
+    &__info {
+      background-color: $color-grey-light;
+      border: 2px solid $color-grey;
+      padding: 20px;
+      width: 30%;
+      font-family: $font;
+      margin-top: 5%;
+      border-radius: 20px;
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      -ms-border-radius: 20px;
+      -o-border-radius: 20px;
+
+      & h3 {
+        color: $color-primary;
+      }
+
+      & p {
+        line-height: 50px;
+      }
+    }
+
+    &__profile {
+      text-align: center;
+      font-family: $font;
+      background-color: $color-grey-light;
+      padding: 20px;
+
+      & h3 {
+        color: $color-primary;
+      }
+
+      & img {
+        height: 300px;
+      }
+
+      & button {
+        background-color: $color-primary;
+        color: $color-white;
+        border: 2px solid $color-grey;
+        height: 25px;
+        cursor: pointer;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+      }
+    }
+  }
+}

@@ -17,3 +17,10 @@
     </div>
   </div>
 </div>
+
+<div class="container__price" *ngIf="products.length != 0">
+  <p>Sub Total: {{ price | currency }}</p>
+  <p>Tax: {{ price * .087 | currency }}</p>
+  <p>Grand Total: {{ price + (price * .087) | currency }}</p>
+  <button (click)="onCheckout()">Check Out</button>
+</div>

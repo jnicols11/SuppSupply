@@ -1,1 +1,23 @@
-<p>home works!</p>
+<div class="banner">
+  <h2>Making the World go round, one pill at a time.</h2>
+  <button [routerLink]="['/products']">Shop Now</button>
+</div>
+<div class="featured">
+  <h2>Featured Supplements</h2>
+  <div class="featured__item">
+    <div class="featured__item__info">
+      <h3>Vitality Immuno Enhancer</h3>
+      <p>Helps to increase focus, memory, immune system, and endocrine functions with ingredients such as alfalfa, quercetin, gotu kola, and zinc!</p>
+      <p>Just take two a day and start noticing results in no time.</p>
+    </div>
+    <div class="featured__item__profile">
+      <h3>Vitality Immuno Enhancer</h3>
+      <img src="assets/images/1.png">
+      <p>$39.95</p>
+      <button
+        (click)="addToCart()"
+        >Add to Cart
+      </button>
+    </div>
+  </div>
+</div>

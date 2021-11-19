@@ -17,6 +17,7 @@ export class CartComponent implements OnInit {
   userID: number | null;
   cartID: number | null;
   products: any = [];
+  price: any;
 
   constructor(private store: Store<AppState>, private cartService: CartService) {
     this.cartState = this.store.select(selectCartState);
@@ -26,6 +27,7 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.cartState.subscribe((state) => {
       this.products = state.products;
+      this.calculatePrice();
     });
     var userSub = this.userState.subscribe((state) => {
       this.userID = state.user.ID;
@@ -67,5 +69,18 @@ export class CartComponent implements OnInit {
     )
 
     userSub.unsubscribe();
+  }
+
+  onCheckout() {
+
+  }
+
+  private calculatePrice() {
+    let total = 0;
+    this.products.forEach(product => {
+      total += product.price;
+    });
+
+    this.price = total;
   }
 }
