@@ -37,6 +37,17 @@ export class CartService {
     )
   }
 
+  createCart(userID: number) {
+    return this.http.post(
+      this.baseURL + '/cart/create/',
+      userID,
+      {
+        observe: 'response',
+        responseType: 'json'
+      }
+    )
+  }
+
   addToCart(info: { cartID, productID }) {
     return this.http.post(
       this.baseURL + '/cart/add',
@@ -61,7 +72,6 @@ export class CartService {
   }
 
   setCart(userID: number) {
-    console.log("setting cart");
     // get cart ID
     this.getUserCart(userID)
       .subscribe(
@@ -71,8 +81,6 @@ export class CartService {
           var cartSub = this.cartState.subscribe(
             state => {
               if (state.products.length > 0) {
-                // get all products in the cart
-                console.log('getting products');
                 this.getCartProducts(this.cartID)
                   .subscribe(
                     productData => {
@@ -82,7 +90,7 @@ export class CartService {
                       state.products.forEach(product => {
                         products.push(product);
                       })
-                      this.store.dispatch(new UpdateCart({ products: products, userID: userID }));
+                      this.store.dispatch(new UpdateCart({ products: products, cartID: this.cartID, userID: userID }));
                     }, error => {
                       console.log(error);
                     }
@@ -105,7 +113,7 @@ export class CartService {
                 this.getCartProducts(this.cartID)
                   .subscribe(
                     productData => {
-                      this.store.dispatch(new UpdateCart({ products: productData.body, userID: userID }));
+                      this.store.dispatch(new UpdateCart({ products: productData.body, cartID: this.cartID, userID: userID }));
                     }, error => {
                       console.log(error);
                     }

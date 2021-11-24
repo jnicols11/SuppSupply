@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
+import { CartService } from '../services/cart.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
   regSuccess = false;
   regFailure = false;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -24,7 +25,15 @@ export class RegisterComponent implements OnInit {
     this.userService.register(this.registerForm.value)
       .subscribe(
         responseData => {
-          console.log(responseData);
+          let userID = responseData.body['ID'];
+          this.cartService.createCart(userID)
+            .subscribe(
+              response => {
+                console.log(response);
+              }, error => {
+                console.log(error);
+              }
+            )
           this.regSuccess = true;
         }, error => {
           this.regFailure = true

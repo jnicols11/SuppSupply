@@ -72,12 +72,18 @@ p {
         background-color: rgb(199, 0, 0);
         border: 2px solid rgb(199, 0, 0);
       }
+
+      &__desc {
+        font-size: 14px;
+        width: 30%;
+      }
     }
   }
 
   &__price {
     margin-left: 80%;
     height: 150px;
+    margin-bottom: 5%;
 
     & button {
       height: 25px;

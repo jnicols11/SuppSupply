@@ -21,6 +21,7 @@
     &__item {
       width: 200px;
       border: 2px solid $color-grey;
+      padding: 5px 10px;
       text-align: center;
       cursor: pointer;
       font-family: $font;
@@ -58,6 +59,7 @@
 
   &__container {
     margin-top: -30px;
+    padding: 0 10px;
 
     & img {
       height: 250px;

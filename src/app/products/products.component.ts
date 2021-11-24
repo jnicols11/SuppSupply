@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { Product } from '../models/Product.model';
+import { CartService } from '../services/cart.service';
 import { ProductService } from '../services/product.service';
 import { UpdateCart } from '../store/actions/cart.actions';
-import { AppState, selectCartState } from '../store/app.states';
+import { AppState, selectAuthState, selectCartState } from '../store/app.states';
 
 @Component({
   selector: 'app-products',
@@ -14,11 +16,16 @@ import { AppState, selectCartState } from '../store/app.states';
 export class ProductsComponent implements OnInit {
   products: any = [];
   cartState: Observable<any>;
-  selectedProduct = null;
+  authState: Observable<any>;
+  selectedProduct: Product = null;
   stateProducts: any = [];
+  isAuthenticated = false;
+  cartID = null;
+  userID = null;
 
-  constructor(private service: ProductService, private store: Store<AppState>, private router: Router) {
+  constructor(private service: ProductService, private cartService: CartService, private store: Store<AppState>, private router: Router) {
     this.cartState = this.store.select(selectCartState);
+    this.authState = this.store.select(selectAuthState);
   }
 
   ngOnInit(): void {
@@ -35,11 +42,34 @@ export class ProductsComponent implements OnInit {
   }
 
   addToCart() {
-    this.stateProducts.push(this.selectedProduct);
+    if (this.isAuthenticated) {
+      let info = { cartID: this.cartID, productID: this.selectedProduct.ID };
+      console.log(info);
 
-    this.store.dispatch(new UpdateCart({ products: this.stateProducts }));
+      // User is logged in, add item to cart in DB
+      this.cartService.addToCart(info)
+        .subscribe(
+          response => {
+            console.log(response);
 
-    this.router.navigate(['/cart']);
+            this.stateProducts.push(this.selectedProduct);
+
+            this.store.dispatch(new UpdateCart({ cartID: this.cartID, userID: this.userID, products: this.stateProducts }));
+
+            this.router.navigate(['/cart']);
+          }, error => {
+            console.log(error);
+          }
+        )
+    } else {
+      // User is not logged in
+      this.stateProducts.push(this.selectedProduct);
+
+      this.store.dispatch(new UpdateCart({ products: this.stateProducts }));
+
+      this.router.navigate(['/cart']);
+    }
+
   }
 
   private populateProducts() {
@@ -57,6 +87,14 @@ export class ProductsComponent implements OnInit {
     this.cartState.subscribe(
       state => {
         this.stateProducts = state.products;
+        this.cartID = state.cartID;
+        this.userID = state.userID;
+      }
+    )
+
+    this.authState.subscribe(
+      state => {
+        this.isAuthenticated = state.isAuthenticated;
       }
     )
   }

@@ -7,7 +7,7 @@
     <div class="container__products__item" *ngFor="let product of products; let i = index">
       <img src="assets/images/{{ product.image }}" alt="{{ product.name }}"/>
       <p>{{ product.name }}</p>
-      <p>{{ product.description }}</p>
+      <p class="container__products__item__desc">{{ product.description }}</p>
       <p>{{ product.price | currency }}</p>
       <button
         type="button"

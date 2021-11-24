@@ -26,19 +26,13 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartState.subscribe((state) => {
+      console.log(state);
       this.products = state.products;
+      this.cartID = state.cartID;
       this.calculatePrice();
     });
     var userSub = this.userState.subscribe((state) => {
       this.userID = state.user.ID;
-      this.cartService.getUserCart(this.userID)
-        .subscribe(
-          responseData => {
-            this.cartID = responseData.body['ID'];
-          }, error => {
-            console.log(error);
-          }
-        )
     });
 
     userSub.unsubscribe();
@@ -54,14 +48,14 @@ export class CartComponent implements OnInit {
               responseData => {
                 console.log(responseData);
                 this.products.splice(index, 1);
-                this.store.dispatch(new UpdateCart({ products: this.products }));
+                this.store.dispatch(new UpdateCart({ cartID: this.cartID, userID: this.userID, products: this.products }));
               }, error => {
                 console.log(error);
               }
             )
         } else {
           this.products.splice(index, 1);
-          this.store.dispatch(new UpdateCart({ products: this.products }));
+          this.store.dispatch(new UpdateCart({ cartID: this.cartID, userID: this.userID, products: this.products }));
         }
       }, error => {
         console.log(error);
