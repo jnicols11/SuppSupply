@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Product } from '../models/Product.model';
 import { CartService } from '../services/cart.service';
 import { UpdateCart } from '../store/actions/cart.actions';
 import { AppState, selectAuthState, selectCartState } from '../store/app.states';
@@ -19,7 +19,11 @@ export class CartComponent implements OnInit {
   products: any = [];
   price: any;
 
-  constructor(private store: Store<AppState>, private cartService: CartService) {
+  constructor(
+    private store: Store<AppState>,
+    private cartService: CartService,
+    private router: Router
+  ) {
     this.cartState = this.store.select(selectCartState);
     this.userState = this.store.select(selectAuthState);
   }
@@ -66,7 +70,14 @@ export class CartComponent implements OnInit {
   }
 
   onCheckout() {
-
+    // check if user is logged in
+    if (this.userID == null) {
+      // No user logged in (prompt user to log in in order to continue to checkout
+      this.router.navigate(['/login'], { queryParams: { action: 'checkout' }})
+    } else {
+      // User is logged in (bring user to checkout page)
+      this.router.navigate(['/checkout']);
+    }
   }
 
   private calculatePrice() {

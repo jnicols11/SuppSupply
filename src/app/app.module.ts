@@ -19,6 +19,7 @@ import { AuthEffects } from './store/effects/auth.effects';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/app.states';
 import { CartEffects } from './store/effects/cart.effects';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CartEffects } from './store/effects/cart.effects';
     NavComponent,
     ProductsComponent,
     CartComponent,
-    SearchComponent
+    SearchComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

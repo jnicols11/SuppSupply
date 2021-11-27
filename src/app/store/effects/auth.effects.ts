@@ -34,7 +34,7 @@ export class AuthEffects {
       .switchMap(payload => {
          return this.userService.login(payload.email, payload.password)
            .map((user) => {
-              return new LogInSuccess({ ID: user.body.ID, firstName: user.body.FirstName, lastName: user.body.LastName, email: payload.email })
+              return new LogInSuccess({ ID: user.body.ID, firstName: user.body.FirstName, lastName: user.body.LastName, email: payload.email, checkout: payload.checkout })
           }).catch(
           (error) => {
             console.log(error);
@@ -49,7 +49,11 @@ export class AuthEffects {
     tap((user) => {
       localStorage.setItem('token', user.payload.ID);
       this.cartService.setCart(user.payload.ID);
-      this.router.navigate(['/']);
+      if (user.payload.checkout) {
+        this.router.navigate(['/checkout']);
+      } else {
+        this.router.navigate(['/']);
+      }
     })
   );
 
