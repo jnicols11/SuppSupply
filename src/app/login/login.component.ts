@@ -23,7 +23,13 @@ export class LoginComponent implements OnInit {
   cartID: number;
   checkout: boolean = false;
 
-  constructor(private store: Store<AppState>, private userService: UserService, private router: Router, private cartService: CartService, private route: ActivatedRoute) {
+  constructor(
+    private store: Store<AppState>,
+    private userService: UserService,
+    private router: Router,
+    private cartService: CartService,
+    private route: ActivatedRoute
+  ) {
     this.getState = this.store.select(selectAuthState);
    }
 

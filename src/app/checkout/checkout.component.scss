@@ -1,0 +1,188 @@
+@import '../app.component.scss';
+
+.container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+
+  & h2 {
+    font-family: $font;
+    color: $color-primary;
+  }
+
+  &__shipping {
+    width: 53%;
+    background-color: $color-grey-light;
+    padding: 15px;
+    border: 2px solid $color-grey;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    text-align: center;
+
+    & h4 {
+      font-family: $font;
+      color: $color-primary;
+    }
+  }
+
+  &__details {
+    width: 40%;
+    background-color: $color-grey-light;
+    padding: 15px;
+    border: 2px solid $color-grey;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    text-align: center;
+
+    & h4 {
+      font-family: $font;
+      color: $color-primary;
+    }
+  }
+
+  &__billing {
+    background-color: $color-grey-light;
+    border: 2px solid $color-grey;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3%;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    display: flex;
+
+    &__left {
+      width: 50%;
+    }
+
+    .vl {
+      border-left: 2px solid $color-grey;
+      height: 500px;
+    }
+
+    &__right {
+      width: 40%;
+    }
+
+    & h4 {
+      font-family: $font;
+      color: $color-primary;
+      text-align: center;
+    }
+  }
+
+  &__field__name {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 3%;
+    text-align: left;
+
+    & label {
+      font-family: $font;
+    }
+
+    & input {
+      width: 100%;
+      height: 30px;
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+    }
+  }
+
+  &__field {
+    margin-bottom: 3%;
+    text-align: left;
+    margin-left: 20%;
+
+    & label {
+      font-family: $font;
+    }
+
+    & input {
+      height: 30px;
+      width: 75%;
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+    }
+
+    & select {
+      height: 30px;
+      width: 75%;
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+    }
+  }
+
+  &__field__payment {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+
+    & input {
+      width: 25%;
+    }
+
+    & p {
+      font-size: 25px;
+    }
+  }
+}
+
+.checkoutbtn {
+  margin-left: 80%;
+  margin-bottom: 5%;
+  height: 50px;
+  width: 10%;
+  background-color: $color-primary;
+  color: $color-white;
+  cursor: pointer;
+  border: 2px solid $color-primary;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  transition: all .5s;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  -ms-transition: all .5s;
+  -o-transition: all .5s;
+}
+
+.checkoutbtn:hover {
+  background-color: $color-primary-dark;
+  border: 2px solid $color-primary-dark;
+  color: $color-grey-light;
+}
+
+.checkoutbtn:disabled {
+  background-color: $color-primary-dark;
+  border: 2px solid $color-primary-dark;
+  color: $color-grey-light;
+  cursor: default;
+}
+
+.col-1 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3%;
+}
